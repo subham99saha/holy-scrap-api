@@ -2,6 +2,10 @@
 
 const express = require('express');
 const cors = require('cors');
+
+const dotenv = require('dotenv');
+dotenv.config();
+
 // const mongoose = require('mongoose'); // Import Mongoose
 // const config = require('./config.json'); // Import config from config.json
 
@@ -34,6 +38,7 @@ app.use('/scrape', scrapeRoutes);
 //   });
 
 // Start the server using the PORT from config.json
-app.listen(5000, () => {
-  console.log(`Server is running on port ${5000}`);
+const port = process.env.PORT
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
