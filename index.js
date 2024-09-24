@@ -38,7 +38,7 @@ app.use('/scrape', scrapeRoutes);
 //   });
 
 // Start the server using the PORT from config.json
-const port = process.env.PORT
+const port = Number(process.env.PORT)
 console.log({port})
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
