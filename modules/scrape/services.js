@@ -58,7 +58,7 @@ const scrapeAmazon = (query) => new Promise(async resolve => {
     
     const browser = await puppeteer.launch({
         // executablePath: '/home/ec2-user/.cache/puppeteer/chrome/linux-129.0.6668.58/chrome-linux64/chrome', // Custom path to Chromium
-        headless: true,
+        headless: false,
         args: ['--disable-http2']
         // args: [
         //     '--no-sandbox',
@@ -83,6 +83,10 @@ const scrapeAmazon = (query) => new Promise(async resolve => {
         console.log('goto done')
         await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
         console.log('screenshot clicked')
+        const bodyHTML = await page.content();
+        if (bodyHTML.includes("It's rush hour")) {
+            console.log("Error page detected. Retrying...");
+        }
         await page.waitForSelector('.s-result-item');
         console.log('selector found')
         // await autoScroll(page);
