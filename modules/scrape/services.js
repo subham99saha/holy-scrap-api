@@ -1,31 +1,5 @@
 const puppeteer = require('puppeteer');
 
-// async function autoScroll(page) {
-//     const startT = Date.now(); // Record the start time
-
-//     await page.evaluate(async () => {
-//         await new Promise((resolve) => {
-//             let totalHeight = 0;
-//             const distance = 100;
-//             const timer = setInterval(() => {
-//                 const scrollHeight = document.body.scrollHeight;
-//                 window.scrollBy(0, distance);
-//                 totalHeight += distance;
-
-//                 if (totalHeight >= scrollHeight) {
-//                     clearInterval(timer);
-//                     resolve();
-//                 }
-//             }, 100);
-//         });
-//     });
-    
-//     const endT = Date.now(); // Record the end time
-//     const timeTaken = (endT - startT) / 1000; // Calculate time taken in seconds
-
-//     console.log(`Scroll completed in ${timeTaken} seconds`);
-// }
-
 async function autoScroll(page, maxScrollHeight = 6000, maxTime = 10000) {
     const startT = Date.now(); // Record the start time
 
@@ -107,6 +81,8 @@ const scrapeAmazon = (query) => new Promise(async resolve => {
     try {
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         console.log('goto done')
+        await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
+        console.log('screenshot clicked')
         await page.waitForSelector('.s-result-item');
         console.log('selector found')
         // await autoScroll(page);
