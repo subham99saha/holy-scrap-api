@@ -141,6 +141,8 @@ const scrapeMyntra = (query) => new Promise(async resolve => {
     try {
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         console.log('goto done')
+        await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
+        console.log('screenshot clicked')
         await page.waitForSelector('.product-base');
         console.log('selector found')
         await autoScroll(page);
@@ -200,6 +202,8 @@ const scrapeFlipkart = (query) => new Promise(async resolve => {
     try {
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         console.log('goto done')
+        await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
+        console.log('screenshot clicked')
         await page.waitForSelector('[data-id]');
         console.log('selector found')
         // await autoScroll(page);
@@ -275,6 +279,8 @@ const scrapeAjio = (query) => new Promise(async resolve => {
     try {
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         console.log('goto done')
+        await page.screenshot({ path: 'debug-screenshot.png', fullPage: true });
+        console.log('screenshot clicked')
         await page.waitForSelector('.preview');
         console.log('selector found')
         await autoScroll(page);
