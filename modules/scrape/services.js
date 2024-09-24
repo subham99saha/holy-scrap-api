@@ -83,6 +83,7 @@ const scrapeAmazon = (query) => new Promise(async resolve => {
     const url = `https://www.amazon.in/s?k=${q}`;
     
     const browser = await puppeteer.launch({
+        executablePath: '/home/ec2-user/.cache/puppeteer/chrome/linux-129.0.6668.58/chrome-linux64/chrome', // Custom path to Chromium
         headless: true,
         // args: ['--disable-http2']
         args: [
