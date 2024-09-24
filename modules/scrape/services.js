@@ -83,18 +83,18 @@ const scrapeAmazon = (query) => new Promise(async resolve => {
     const url = `https://www.amazon.in/s?k=${q}`;
     
     const browser = await puppeteer.launch({
-        executablePath: '/home/ec2-user/.cache/puppeteer/chrome/linux-129.0.6668.58/chrome-linux64/chrome', // Custom path to Chromium
+        // executablePath: '/home/ec2-user/.cache/puppeteer/chrome/linux-129.0.6668.58/chrome-linux64/chrome', // Custom path to Chromium
         headless: true,
-        // args: ['--disable-http2']
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-gpu',
-            '--disable-dev-shm-usage',
-            '--disable-software-rasterizer',
-            '--disable-blink-features=AutomationControlled',
-            '--disable-extensions'
-        ]
+        args: ['--disable-http2']
+        // args: [
+        //     '--no-sandbox',
+        //     '--disable-setuid-sandbox',
+        //     '--disable-gpu',
+        //     '--disable-dev-shm-usage',
+        //     '--disable-software-rasterizer',
+        //     '--disable-blink-features=AutomationControlled',
+        //     '--disable-extensions'
+        // ]
     });
     console.log('puppeteer launched')
     
