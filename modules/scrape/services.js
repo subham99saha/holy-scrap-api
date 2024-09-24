@@ -84,7 +84,16 @@ const scrapeAmazon = (query) => new Promise(async resolve => {
     
     const browser = await puppeteer.launch({
         headless: true,
-        args: ['--disable-http2']
+        // args: ['--disable-http2']
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-gpu',
+            '--disable-dev-shm-usage',
+            '--disable-software-rasterizer',
+            '--disable-blink-features=AutomationControlled',
+            '--disable-extensions'
+        ]
     });
     console.log('puppeteer launched')
     
